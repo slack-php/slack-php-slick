@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+
+  php-fpm:
+    image: php:7.3-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+      - ../Slick.php:/var/www/Slick.php
+    networks:
+      - app-network
+    environment:
+      - SLACK_SIGNING_KEY
+
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - php-fpm
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/var/www
+      - ./site.conf:/etc/nginx/conf.d/site.conf
+
+    networks:
+      - app-network
+

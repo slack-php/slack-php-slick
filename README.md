@@ -1,6 +1,6 @@
-# Slick Slack
+# Slick (by slack-php)
 
-A single-file, dependency-free PHP micro-framework for building simple Slack apps.
+A _slick_, single-file, dependency-free PHP micro-framework for building simple Slack apps.
 
 **For something more robust, you should use our fully-featured [Slack PHP Framework][1].**
 
@@ -40,7 +40,7 @@ the slack command was used.
 
 SlackPhp\Slick::app()
     ->route('command', '/cool', function (array $payload) {
-        return "Thanks for running the {$payload['command']} command. You are cool! :thumbsup:";
+        return "Thanks for running the `{$payload['command']}` command. You are cool! :thumbsup:";
     })
     ->run();
 ```
@@ -69,7 +69,7 @@ SlackPhp\Slick::app()
             // associative array, or JSON-serializable object. You should make sure that anything you include in the ack
             // is supported by the type of interaction you are responding to. Many interactions don't require an ack
             // body, so you can also return null, and empty string, or just omit a return statement, entirely.
-            return "Thanks for running the {$payload['command']} command. You are cool! :thumbsup:";
+            return "Thanks for running the `{$payload['command']}` command. You are cool! :thumbsup:";
         }
     )
     // Add as many routes as you need to handle all your interactions.
