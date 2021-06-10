@@ -45,6 +45,8 @@ SlackPhp\Slick::app()
     ->run();
 ```
 
+_Want to run this example in your workspace? Check out the [Example App][3] using Docker._
+
 ### Breaking It Down
 
 Let's add some comments to that last example, so you know what is going on.
@@ -127,3 +129,4 @@ the routing features.
 
 [1]: https://github.com/slack-php/slack-php-app-framework
 [2]: https://api.slack.com/start
+[3]: https://github.com/slack-php/slack-php-slick/tree/main/example
