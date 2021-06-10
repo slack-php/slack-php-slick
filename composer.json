@@ -1,0 +1,40 @@
+{
+    "name": "slack-php/slick",
+    "description": "Simple micro-framework for Slack app development",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Lindblom",
+            "email": "jeremeamia@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.3"
+        }
+    },
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "kahlan/kahlan": "^5.1",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^0.12.89"
+    },
+    "autoload": {
+        "files": ["Slick.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SlackPhp\\Spec\\": "spec/"
+        }
+    },
+    "scripts": {
+        "test": "kahlan",
+        "style": "php-cs-fixer fix --rules=@PSR12 Slick.php",
+        "stan": "phpstan analyse --level=8 Slick.php",
+        "qa": ["@style", "@stan", "@test"]
+    }
+}
