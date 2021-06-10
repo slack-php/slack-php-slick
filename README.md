@@ -1,18 +1,34 @@
 # Slick Slack
 
-A small, simple, and dependency-free PHP micro-framework for building Slack apps.
+A single-file, dependency-free PHP micro-framework for building simple Slack apps.
 
-For something more robust, you should use the fully-featured [Slack PHP Framework][1].
+**For something more robust, you should use our fully-featured [Slack PHP Framework][1].**
 
-If you are new to Slack app development, you will want to read about it on [Slack's website][2].
+If you are new to Slack app development, you will want to learn about it on [Slack's website][2].
 
 ## Installation
 
-To be documented (but it will be via Composer or download/C&P).
+### Requirements
+
+Requires PHP 7.3+ with JSON support.
+
+### Via Composer
+
+We recommend using Composer to install Slick, so that autoloading and keeping it up-to-date are easy.
+
+```
+composer require slack-php/slick
+```
+
+### Manual
+
+However, since Slick has no dependencies, you can directly download and require `Slick.php` or copy & paste the code
+directly into your project.
 
 ## Basic Usage
 
-This small app responds to the `/cool` slash command.
+This small app responds to the `/cool` slash command by posting a message back to the conversation where
+the slack command was used.
 
 > Assumptions:
 >
@@ -78,15 +94,19 @@ There isn't much to customize, but you can control the behavior of your Slick Sl
 2. An error occurs while processing the incoming request (`orErr()`).
 
 ```php
+<?php
+
 SlackPhp\Slick::app()
     ->route(...)
     ->route(...)
     ->route(...)
     ->on404(function (array $payload) {
-        // Do something. If you don't use on404(), then your app throws an error.
+        // Do something custom. This is essentially used as a catch-all listener.
+        // If you don't use on404(), then your app throws an error.
     })
     ->onErr(function (Throwable $err) {
-        // Do something. If you don't use onErr(), then your app calls `error_log()` and acks with a 500-level response.
+        // Do something custom.
+        // If you don't use onErr(), then your app calls `error_log()` and acks with a 500-level response.
     })
     ->run();
 ```
@@ -94,7 +114,7 @@ SlackPhp\Slick::app()
 ## Helper Functions
 
 If you want to do your own request handling, Slick provides some static helper methods that you can use independent from
-the router features.
+the routing features.
 
 - `Slick::validateSignature(string $key, string $signature, int $time, string $body): void` – Validates a Slack request
   signature using their v0 algorithm.
