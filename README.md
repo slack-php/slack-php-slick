@@ -25,6 +25,8 @@ composer require slack-php/slick
 However, since Slick has no dependencies, you can directly download and require `Slick.php` or copy & paste the code
 directly into your project.
 
+(If you do end up doing this, let me know, because I will have no other way to track that it's happening.)
+
 ## Basic Usage
 
 This small app responds to the `/cool` slash command by posting a message back to the conversation where
